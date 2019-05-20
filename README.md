@@ -1,2 +1,2 @@
-#University Clinic Hospital
-This application will mangage hospital employees and patiants and their interactions
+# University Clinic Hospital
+This application will mangage hospital employees and patients and their interactions. It will be built using Object Oriented Programming (OOP) principles, as well as Test Driven Developement (TDD)

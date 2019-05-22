@@ -6,6 +6,10 @@ import org.junit.Test;
 public class DoctorTest {
 	
 	Doctor underTest = new Doctor("", 0, null);
+	@Before
+	public void setup() {
+		underTest = new Doctor("", 0, null);
+	} 
 	
 	@Test
 	public void shouldBeAbleToInstantiateDoctor() {

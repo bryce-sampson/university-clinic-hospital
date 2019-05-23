@@ -67,4 +67,21 @@ public class DoctorTest {
 		String expectedSpecialty = podiatrist.getSpecialty();
 		assertEquals("Podiatrist", expectedSpecialty);
 	}
+	
+	@Test
+	public void shouldBeAbleToDrawBlood() {
+		underTest.drawBlood();
+	}
+	
+	@Test
+	public void shouldBeAbleToCareForPatient() {
+		underTest.care();
+	}
+	
+	
+	
+	
+	
+	
+	
 }

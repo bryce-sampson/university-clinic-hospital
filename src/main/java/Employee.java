@@ -13,6 +13,9 @@ public abstract class Employee {
 	public boolean getHasBeenPaid() {
 		return hasBeenPaid;
 	}
+	public int getSalary() {
+		return 0;
+	}
 	
 	public Employee(String name, int employeeNumber) {
 		this.name = name;

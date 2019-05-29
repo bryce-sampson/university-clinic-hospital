@@ -2,7 +2,8 @@
 public class Doctor extends Employee {
 
 	private String specialty;
-
+	
+	@Override
 	public int getSalary() {
 		return 90000;
 	}

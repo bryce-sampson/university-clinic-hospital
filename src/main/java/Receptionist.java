@@ -2,7 +2,8 @@
 public class Receptionist extends Employee{
 
 	private boolean isOnPhone;
-
+	
+	@Override
 	public int getSalary() {
 		return 45000;
 	}

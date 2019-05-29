@@ -9,16 +9,9 @@ public class Janitor extends Employee{
 	public boolean getIsSweeping() {
 		return isSweeping;
 	}
-
 	public Janitor(String name, int employeeNumber) {
-		this.name = name;
-		this.employeeNumber = employeeNumber;
+		super(name, employeeNumber);
 	}
-
-	public void pay() {
-		hasBeenPaid = true; 
-	}
-
 
 	public void sweep() {
 		isSweeping = true;

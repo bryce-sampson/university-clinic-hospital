@@ -5,8 +5,7 @@ public class Nurse extends Employee {
 	}
 	
 	public Nurse(String name, int employeeNumber) {
-		this.name = name;
-		this.employeeNumber = employeeNumber;
+		super(name, employeeNumber);
 	}
 	
 	public int getNumberOfPatients() {

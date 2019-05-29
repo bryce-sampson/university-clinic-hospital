@@ -11,8 +11,7 @@ public class Doctor extends Employee {
 	}
 
 	public Doctor(String name, int employeeNumber, String specialty) {
-		this.name = name;
-		this.employeeNumber = employeeNumber;
+		super(name, employeeNumber);
 		this.specialty = specialty;
 	}
 

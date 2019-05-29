@@ -1,8 +1,8 @@
 
 public abstract class Employee {
-	protected String name;
-	protected int employeeNumber;
-	protected boolean hasBeenPaid;
+	private String name;
+	private int employeeNumber;
+	private boolean hasBeenPaid;
 	
 	public String getName() {
 		return name;
@@ -13,6 +13,13 @@ public abstract class Employee {
 	public boolean getHasBeenPaid() {
 		return hasBeenPaid;
 	}
+	
+	public Employee(String name, int employeeNumber) {
+		this.name = name;
+		this.employeeNumber = employeeNumber;
+		this.hasBeenPaid = false;
+	}
+	
 	public void pay() {
 		hasBeenPaid = true;
 	}

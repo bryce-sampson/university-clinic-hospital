@@ -70,12 +70,20 @@ public class DoctorTest {
 	
 	@Test
 	public void shouldBeAbleToDrawBlood() {
-		underTest.drawBlood();
+		Patient testPatient = new Patient();
+		int initialBloodLevel = testPatient.getBloodLevel();
+		underTest.drawBlood(testPatient);
+		int finalBloodLevel = testPatient.getBloodLevel();
+		assertEquals(initialBloodLevel -2, finalBloodLevel);
 	}
 	
 	@Test
 	public void shouldBeAbleToCareForPatient() {
-		underTest.care();
+		Patient testPatient = new Patient();
+		int initialHealthLevel = testPatient.getHealthLevel();
+		underTest.care(testPatient);
+		int finalHealthLevel = testPatient.getHealthLevel();
+		assertEquals(initialHealthLevel +2, finalHealthLevel);
 	}
 	
 	

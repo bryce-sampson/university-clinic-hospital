@@ -1,5 +1,5 @@
 
-public class Doctor extends Employee {
+public class Doctor extends MedEmployee {
 
 	private String specialty;
 	
@@ -16,10 +16,4 @@ public class Doctor extends Employee {
 		this.specialty = specialty;
 	}
 
-	public void drawBlood() {
-		
-	}
-	public void care() {
-		
-	}
 }

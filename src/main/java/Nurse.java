@@ -1,5 +1,5 @@
 
-public class Nurse extends Employee {
+public class Nurse extends MedEmployee {
 	
 	@Override
 	public int getSalary() {
@@ -12,11 +12,5 @@ public class Nurse extends Employee {
 	public Nurse(String name, int employeeNumber) {
 		super(name, employeeNumber);
 	}
-	
-	public void drawBlood() {
-		
-	}
-	public void care() {
-		
-	}
+
 }

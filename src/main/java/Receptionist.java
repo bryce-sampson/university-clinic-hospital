@@ -1,11 +1,12 @@
 
 public class Receptionist extends Employee {
 
+	private static final int RECEPTIONIST_SALARY = 45000;
 	private boolean isOnPhone;
 
 	@Override
 	public int getSalary() {
-		return 45000;
+		return RECEPTIONIST_SALARY;
 	}
 
 	public Receptionist(String name, int employeeNumber) {
@@ -17,7 +18,7 @@ public class Receptionist extends Employee {
 		return isOnPhone;
 	}
 
-	public void isOnPhone() {
+	public void usePhone() {
 		isOnPhone = true;
 	}
 }

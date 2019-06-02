@@ -1,11 +1,12 @@
 
 public class Janitor extends Employee {
 
+	private static final int JANITOR_SALARY = 40000;
 	private boolean isSweeping;
 
 	@Override
 	public int getSalary() {
-		return 40000;
+		return JANITOR_SALARY;
 	}
 
 	public boolean getIsSweeping() {

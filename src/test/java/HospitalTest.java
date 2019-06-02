@@ -1,4 +1,8 @@
 import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat; 
+import static org.hamcrest.Matchers.*;
+
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -75,4 +79,70 @@ public class HospitalTest {
 		assertEquals("Janet", testEmployeeName);
 	}
 	
+	@Test
+	public void shouldBeAbleToPaySingleEmployeeJanet() {
+		underTest.addDoctor("Janet", 1,  null);
+		underTest.pay(1);
+		boolean janetHasBeenPaid = underTest.getHasBeenPaid(1);
+		assertEquals(true, janetHasBeenPaid);
+	}
+	
+	@Test
+	public void shouldBeAbleToGetDoctorJanetSalary90000() {
+		underTest.addDoctor("Janet", 1, null);
+		int janetSalary = underTest.getSalary(1);
+		assertEquals(90000, janetSalary);
+	}
+	
+	@Test
+	public void shouldBeAbleToGetNurseStephanieSalary50000() {
+		underTest.addNurse("Stephanie", 1);
+		int stephanieSalary = underTest.getSalary(1);
+		assertEquals(50000, stephanieSalary);	
+	}
+	
+	@Test
+	public void shouldBeAbleToGetDoctorJanetSpecialtyNeurosurgery() {
+		underTest.addDoctor("Janet", 1, "Neurosurgery");
+		String janetSpecialty = underTest.getSpecialty(1);
+		assertEquals("Neurosurgery", janetSpecialty);
+	}
+	
+	@Test
+	public void shouldBeAbleToGetDoctorBobSpecialtyProctology() {
+		underTest.addDoctor("Bob", 1, "Proctology");
+		String bobSpecialty = underTest.getSpecialty(1);
+		assertEquals("Proctology", bobSpecialty);
+	}
+	
+	@Test
+	public void shouldBeAbleToAddFourEmployeesAndGetNumberOfEmployeesFour() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		int numberOfEmployees = underTest.getNumberOfEmployees();
+		assertEquals(4, numberOfEmployees);
+	}
+	
+	@Test
+	public void shouldBeAbleToGetNurseSallyNumberOfPatientsZero() {
+		underTest.addNurse("Sally", 1);
+		int sallyNumberOfPatients = underTest.getNumberOfPatients(1);
+		assertEquals(sallyNumberOfPatients, 0);
+	}
+	
+	@Test
+	public void shouldBeAbleToGetReceptionistAveryIsOnPhoneFalse() {
+		underTest.addReceptionist("Avery", 1);
+		boolean averyOnPhone = underTest.getIsOnPhone(1);
+		assertEquals(false, averyOnPhone);
+	}
+	
+	@Test
+	public void shouldBeAbleToGetJanitorKennedyIsSweepingFalse() {
+		underTest.addJanitor("Kennedy", 1);
+		boolean kennedySweeping = underTest.getIsSweeping(1);
+		assertEquals(false, kennedySweeping);
+	}
 }

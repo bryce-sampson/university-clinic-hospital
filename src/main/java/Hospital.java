@@ -1,91 +1,147 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Hospital {
 
-	private HashMap<Integer, Doctor> doctors = new HashMap<Integer, Doctor>();
-	private HashMap<Integer, Nurse> nurses = new HashMap<Integer, Nurse>();
-	private HashMap<Integer, Receptionist> receptionists = new HashMap<Integer, Receptionist>();
-	private HashMap<Integer, Janitor> janitors = new HashMap<Integer, Janitor>();
+	private ArrayList<Doctor> doctors = new ArrayList<Doctor>();
+	private ArrayList<Nurse> nurses = new ArrayList<Nurse>();
+	private ArrayList<Receptionist> receptionists = new ArrayList<Receptionist>();
+	private ArrayList<Janitor> janitors = new ArrayList<Janitor>();
+	private ArrayList<Employee> employees = new ArrayList<Employee>();
 
 	public int getNumberOfEmployees() {
-		return makeEmployeesHashMap().size();
+		return employees.size();
 	}
 
-	public HashMap<Integer, Employee> makeEmployeesHashMap() {
-		HashMap<Integer, Employee> employees = new HashMap<Integer, Employee>();
-		employees.putAll(doctors);
-		employees.putAll(nurses);
-		employees.putAll(receptionists);
-		employees.putAll(janitors);
+	ArrayList<Employee> getEmployees() {
 		return employees;
 	}
 
 	public String getEmployeeName(int employeeNumber) {
-		return makeEmployeesHashMap().get(employeeNumber).getName();
+		String name = null;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				name = employee.getName();
+			}
+		}
+		return name;
 	}
 
 	public int getSalary(int employeeNumber) {
-		return makeEmployeesHashMap().get(employeeNumber).getSalary();
+		int salary = -1;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				salary = employee.getSalary();
+			}
+		}
+		return salary;
 	}
 
 	public boolean getHasBeenPaid(int employeeNumber) {
-		return makeEmployeesHashMap().get(employeeNumber).getHasBeenPaid();
+		boolean hasBeenPaid = false;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				hasBeenPaid = employee.getHasBeenPaid();
+			}
+		}
+		return hasBeenPaid;
 	}
 
 	public String getSpecialty(int employeeNumber) {
-		if (doctors.get(employeeNumber) != null) {
-			return doctors.get(employeeNumber).getSpecialty();
-		} else {
-			return null;
+		String specialty = null;
+		for (Doctor doctor : doctors) {
+			if (doctor.getEmployeeNumber() == employeeNumber) {
+				specialty = doctor.getSpecialty();
+			}
 		}
+		return specialty;
 	}
 
 	public int getNumberOfPatients(int employeeNumber) {
-		if (nurses.get(employeeNumber) != null) {
-			return nurses.get(employeeNumber).getNumberOfPatients();
-		} else {
-			return -1;
-		}
+		int numberOfPatients = 0;
+		return numberOfPatients;
 	}
 
 	public boolean getIsOnPhone(int employeeNumber) {
-		if (receptionists.get(employeeNumber) != null) {
-			return receptionists.get(employeeNumber).getIsOnPhone();
-		} else {
-			return false;
+		boolean isOnPhone = false;
+		for (Receptionist receptionist : receptionists) {
+			if (receptionist.getEmployeeNumber() == employeeNumber) {
+				isOnPhone = receptionist.getIsOnPhone();
+			}
 		}
+		return isOnPhone;
 	}
 
 	public boolean getIsSweeping(int employeeNumber) {
-		if (janitors.get(employeeNumber) != null) {
-			return janitors.get(employeeNumber).getIsSweeping();
-		} else {
-			return false;
+		boolean isSweeping = false;
+		for (Janitor janitor : janitors) {
+			if (janitor.getEmployeeNumber() == employeeNumber) {
+				isSweeping = janitor.getIsSweeping();
+			}
 		}
+		return isSweeping;
 	}
 
 	public void addJanitor(String name, int employeeNumber) {
-		janitors.put(employeeNumber, new Janitor(name, employeeNumber));
-	}
-
-	public void addNurse(String name, int employeeNumber) {
-		nurses.put(employeeNumber, new Nurse(name, employeeNumber));
-	}
-
-	public void addReceptionist(String name, int employeeNumber) {
-		receptionists.put(employeeNumber, new Receptionist(name, employeeNumber));
-	}
-
-	public void addDoctor(String name, int employeeNumber, String specialty) {
-		doctors.put(employeeNumber, new Doctor(name, employeeNumber, specialty));
-	}
-
-	public void pay(int employeeNumber) {
-		if (makeEmployeesHashMap().get(employeeNumber).getHasBeenPaid()) {
-			System.out.println("Employee Number " + employeeNumber + " has already been paid.");
-		} else {
-			makeEmployeesHashMap().get(employeeNumber).pay();
+		Janitor janitor = new Janitor(name, employeeNumber);
+		boolean isAlreadyEmployeeNumber = false;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				isAlreadyEmployeeNumber = true;
+			}
+		}
+		if (!isAlreadyEmployeeNumber) {
+			employees.add(janitor);
+			janitors.add(janitor);
 		}
 	}
 
+	public void addNurse(String name, int employeeNumber) {
+		Nurse nurse = new Nurse(name, employeeNumber);
+		boolean isAlreadyEmployeeNumber = false;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				isAlreadyEmployeeNumber = true;
+			}
+		}
+		if (!isAlreadyEmployeeNumber) {
+			employees.add(nurse);
+			nurses.add(nurse);
+		}
+	}
+
+	public void addReceptionist(String name, int employeeNumber) {
+		Receptionist receptionist = new Receptionist(name, employeeNumber);
+		boolean isAlreadyEmployeeNumber = false;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				isAlreadyEmployeeNumber = true;
+			}
+		}
+		if (!isAlreadyEmployeeNumber) {
+			employees.add(receptionist);
+			receptionists.add(receptionist);
+		}
+	}
+
+	public void addDoctor(String name, int employeeNumber, String specialty) {
+		Doctor doctor = new Doctor(name, employeeNumber, specialty);
+		boolean isAlreadyEmployeeNumber = false;
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				isAlreadyEmployeeNumber = true;
+			}
+		}
+		if (!isAlreadyEmployeeNumber) {
+			employees.add(doctor);
+			doctors.add(doctor);
+		}
+	}
+
+	public void pay(int employeeNumber) {
+		for (Employee employee : employees) {
+			if (employee.getEmployeeNumber() == employeeNumber) {
+				employee.pay();
+			}
+		}
+	}
 }

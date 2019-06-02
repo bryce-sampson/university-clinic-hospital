@@ -1,8 +1,8 @@
 
-public class Receptionist extends Employee{
+public class Receptionist extends Employee {
 
 	private boolean isOnPhone;
-	
+
 	@Override
 	public int getSalary() {
 		return 45000;
@@ -10,6 +10,7 @@ public class Receptionist extends Employee{
 
 	public Receptionist(String name, int employeeNumber) {
 		super(name, employeeNumber);
+		this.isOnPhone = false;
 	}
 
 	public boolean getIsOnPhone() {

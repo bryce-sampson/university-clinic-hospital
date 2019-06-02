@@ -1,11 +1,12 @@
 
 public class Doctor extends MedEmployee {
 
+	private static final int DOCTOR_SALARY = 90000;
 	private String specialty;
 
 	@Override
 	public int getSalary() {
-		return 90000;
+		return DOCTOR_SALARY;
 	}
 
 	public String getSpecialty() {

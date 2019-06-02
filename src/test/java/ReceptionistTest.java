@@ -5,10 +5,11 @@ import org.junit.Test;
 
 public class ReceptionistTest {
 	Receptionist underTest = new Receptionist("", 0);
+
 	@Before
 	public void setup() {
 		underTest = new Receptionist("", 0);
-	} 
+	}
 
 	@Test
 	public void shouldBeAbleToInstantiateReceptionist() {
@@ -42,49 +43,39 @@ public class ReceptionistTest {
 		int expectedEmployeeNumber = underTest.getEmployeeNumber();
 		assertEquals(4, expectedEmployeeNumber);
 	}
+
 	@Test
 	public void shouldBeAbleToGetReceptionistSalary45000() {
 		int expectedSalary = underTest.getSalary();
 		assertEquals(45000, expectedSalary);
 	}
+
 	@Test
 	public void shouldBeAbleToGetHasBeenPaidDefaultFalse() {
 		boolean expectedHasBeenPaid = underTest.getHasBeenPaid();
 		assertEquals(false, expectedHasBeenPaid);
 	}
+
 	@Test
 	public void shouldBeAbleToPayReceptionistAndHasBeenPaidBeTrue() {
 		underTest.pay();
 		boolean expectedHasBeenPaid = underTest.getHasBeenPaid();
 		assertEquals(true, expectedHasBeenPaid);
 	}
-	
-	
+
 	@Test
 	public void shouldBeAbleToSeeIfOnPhoneCallDefaultFalse() {
 		boolean expectedIsOnPhone = underTest.getIsOnPhone();
 		assertEquals(false, expectedIsOnPhone);
-			
+
 	}
-	
+
 	@Test
 	public void isOnPhoneShouldBeTrueIfOnPhone() {
-		underTest.isOnPhone();
+		underTest.usePhone();
 		boolean expectedIsOnPhone = underTest.getIsOnPhone();
 		assertEquals(true, expectedIsOnPhone);
-		
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

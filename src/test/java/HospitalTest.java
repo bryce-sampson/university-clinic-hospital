@@ -158,4 +158,108 @@ public class HospitalTest {
 		assertEquals(true, underTest.getHasBeenPaid(3));
 		assertEquals(true, underTest.getHasBeenPaid(4));
 	}
+	
+	@Test
+	public void doctorshouldBeAbleToDrawBloodAndDecreasePtBloodByTwo() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialBloodLevel = patient.getBloodLevel();
+		underTest.drawBlood(1, patient);
+		int finalBloodLevel = patient.getBloodLevel();
+		assertEquals(initialBloodLevel - 2, finalBloodLevel);
+	}
+	
+	@Test
+	public void nurseshouldBeAbleToDrawBloodAndDecreasePtBloodByOne() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialBloodLevel = patient.getBloodLevel();
+		underTest.drawBlood(2, patient);
+		int finalBloodLevel = patient.getBloodLevel();
+		assertEquals(initialBloodLevel - 1, finalBloodLevel);
+	}
+	
+	@Test
+	public void doctorshouldBeAbleToCareAndIncreasePtHealthByTwo() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialHealthLevel = patient.getHealthLevel();
+		underTest.care(1, patient);
+		int finalHealthLevel = patient.getHealthLevel();
+		assertEquals(initialHealthLevel + 2, finalHealthLevel);
+	}
+	
+	@Test
+	public void nurseshouldBeAbleToCareAndIncreasePtHealthByOne() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialHealthLevel = patient.getHealthLevel();
+		underTest.care(2, patient);
+		int finalHealthLevel = patient.getHealthLevel();
+		assertEquals(initialHealthLevel + 1, finalHealthLevel);
+	}
+	
+	@Test
+	public void receptionistShouldNotBeAbleToDrawBlood() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialBloodLevel = patient.getBloodLevel();
+		underTest.drawBlood(3, patient);
+		int finalBloodLevel = patient.getBloodLevel();
+		assertEquals(initialBloodLevel, finalBloodLevel);
+	}
+	
+	@Test
+	public void janitorShouldNotBeAbleToDrawBlood() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialBloodLevel = patient.getBloodLevel();
+		underTest.drawBlood(4, patient);
+		int finalBloodLevel = patient.getBloodLevel();
+		assertEquals(initialBloodLevel, finalBloodLevel);
+	}
+	
+	@Test
+	public void receptionistShouldNotBeAbleToCare() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialHealthLevel = patient.getHealthLevel();
+		underTest.care(3, patient);
+		int finalHealthLevel = patient.getHealthLevel();
+		assertEquals(initialHealthLevel, finalHealthLevel);
+	}
+	
+	@Test
+	public void janitorShouldNotBeAbleToCare() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		Patient patient = new Patient();
+		int initialHealthLevel = patient.getHealthLevel();
+		underTest.care(4, patient);
+		int finalHealthLevel = patient.getHealthLevel();
+		assertEquals(initialHealthLevel, finalHealthLevel);
+	}
 }

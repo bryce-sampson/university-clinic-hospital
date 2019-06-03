@@ -33,14 +33,14 @@ public class HospitalTest {
 	@Test
 	public void hospitalShouldBeAbleToGetJanitorNameFred() {
 		underTest.addJanitor("Fred", 1);
-		String testEmployeeName = underTest.getEmployeeName(1);
+		String testEmployeeName = underTest.getName(1);
 		assertEquals("Fred", testEmployeeName);
 	}
 	
 	@Test
 	public void hospitalShouldBeAbleToGetJanitorNameJim() {
 		underTest.addJanitor("Jim", 2);
-		String testEmployeeName = underTest.getEmployeeName(2);
+		String testEmployeeName = underTest.getName(2);
 		assertEquals("Jim", testEmployeeName);
 	}
 	
@@ -51,7 +51,7 @@ public class HospitalTest {
 	@Test
 	public void hospitalShouldBeAbleToGetNurseNameSue() {
 		underTest.addNurse("Sue", 1);
-		String testEmployeeName = underTest.getEmployeeName(1);
+		String testEmployeeName = underTest.getName(1);
 		assertEquals("Sue", testEmployeeName);
 	}
 	
@@ -63,7 +63,7 @@ public class HospitalTest {
 	@Test
 	public void shouldBeAbleToGetReceptionistNameJane() {
 		underTest.addReceptionist("Jane", 1);
-		String testEmployeeName = underTest.getEmployeeName(1);
+		String testEmployeeName = underTest.getName(1);
 		assertEquals("Jane", testEmployeeName);
 	}
 	
@@ -75,7 +75,7 @@ public class HospitalTest {
 	@Test
 	public void shouldBeAbleToGetDoctorNameJanet() {
 		underTest.addDoctor("Janet", 1, null);
-		String testEmployeeName = underTest.getEmployeeName(1);
+		String testEmployeeName = underTest.getName(1);
 		assertEquals("Janet", testEmployeeName);
 	}
 	
@@ -144,5 +144,18 @@ public class HospitalTest {
 		underTest.addJanitor("Kennedy", 1);
 		boolean kennedySweeping = underTest.getIsSweeping(1);
 		assertEquals(false, kennedySweeping);
+	}
+	
+	@Test
+	public void shouldBeAbleToPayFourEmployees() {
+		underTest.addDoctor("Alpha", 1, null);
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		underTest.payAll();
+		assertEquals(true, underTest.getHasBeenPaid(1));
+		assertEquals(true, underTest.getHasBeenPaid(2));
+		assertEquals(true, underTest.getHasBeenPaid(3));
+		assertEquals(true, underTest.getHasBeenPaid(4));
 	}
 }

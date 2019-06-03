@@ -16,7 +16,7 @@ public class Hospital {
 		return employees;
 	}
 
-	public String getEmployeeName(int employeeNumber) {
+	public String getName(int employeeNumber) {
 		String name = null;
 		for (Employee employee : employees) {
 			if (employee.getEmployeeNumber() == employeeNumber) {
@@ -141,6 +141,16 @@ public class Hospital {
 		for (Employee employee : employees) {
 			if (employee.getEmployeeNumber() == employeeNumber) {
 				employee.pay();
+			}
+		}
+	}
+
+	public void payAll() {
+		for (Employee employee : employees) {
+			if (employee.getHasBeenPaid() == false) {
+				employee.pay();
+			} else {
+				System.out.println("Employee number " + employee.getEmployeeNumber() + " has already been paid.");
 			}
 		}
 	}

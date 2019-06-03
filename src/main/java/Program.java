@@ -6,6 +6,7 @@ public class Program {
 		
 		Scanner input = new Scanner(System.in);
 		Hospital hospital = new Hospital();
+		Patient patient = new Patient();
 		
 		initializeDemoHospital(hospital);
 		
@@ -15,7 +16,7 @@ public class Program {
 
 	private static void printWelcomeMessage(Hospital hospital) {
 		System.out.println("Welcome to the Hospital Program");
-		System.out.println("You start with four employees");
+		System.out.println("You have four employees and one patient");
 		System.out.println();
 		displayEmployeePrintout(hospital);
 	}
@@ -32,31 +33,34 @@ public class Program {
 //		displaySingleEmployeeAttributes(hospital, employeeNumber);
 	}
 
-	private static void displaySingleEmployeeAttributes(Hospital hospital, int employeeNumber) {
-		System.out.println("| " + nCharacterString(hospital.getEmployeeName(employeeNumber), 15) + 
-				" | " + nCharacterString(Integer.toString(employeeNumber), 15) + 
-				" | " + nCharacterString(Boolean.toString(hospital.getHasBeenPaid(employeeNumber)), 15) +
-				" | " + nCharacterString("Specialty", 15) + 
-				" | " + nCharacterString("Patients", 15) + 
-				" | " + nCharacterString("On Phone", 15) + 
-				" | " + nCharacterString("Sweeping", 15) + " |");
-		
+	private static void displayEmployeeAttributeList(Hospital hospital) {
+		System.out.println("| " + fifteenCharacterString("") + 
+				" | " + fifteenCharacterString("") + 
+				" | " + fifteenCharacterString("") +
+				" | " + fifteenCharacterString("") + 
+				" | " + fifteenCharacterString("") + 
+				" | " + fifteenCharacterString("") + 
+				" | " + fifteenCharacterString("") + " |");
 	}
 
 	private static void displayEmployeePrintoutHeader() {
 		System.out.println("Printout of Employee Data");
 		System.out.println();
-		System.out.println("| " + nCharacterString("Name", 15) + 
-				" | " + nCharacterString("Employee Number", 15) + 
-				" | " + nCharacterString("Has been paid", 15) +
-				" | " + nCharacterString("Specialty", 15) + 
-				" | " + nCharacterString("Patients", 15) + 
-				" | " + nCharacterString("On Phone", 15) + 
-				" | " + nCharacterString("Sweeping", 15) + " |");
+		System.out.println("| " + fifteenCharacterString("Name") + 
+				" | " + fifteenCharacterString("Employee Number") + 
+				" | " + fifteenCharacterString("Has been paid") +
+				" | " + fifteenCharacterString("Specialty") + 
+				" | " + fifteenCharacterString("Patients") + 
+				" | " + fifteenCharacterString("On Phone") + 
+				" | " + fifteenCharacterString("Sweeping") + " |");
 		for(int i = 0; i < 18*7+1; i++) {
 			System.out.print("-");
 		}
 		System.out.println();
+	}
+	
+	private static String fifteenCharacterString(String string) {
+		return nCharacterString(string, 15);
 	}
 
 	private static String nCharacterString(String string, int length) {

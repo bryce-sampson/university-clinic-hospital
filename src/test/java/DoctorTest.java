@@ -85,11 +85,4 @@ public class DoctorTest {
 		int finalHealthLevel = testPatient.getHealthLevel();
 		assertEquals(initialHealthLevel +2, finalHealthLevel);
 	}
-	
-	
-	
-	
-	
-	
-	
 }

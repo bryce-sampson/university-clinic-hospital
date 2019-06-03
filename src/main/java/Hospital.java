@@ -7,13 +7,10 @@ public class Hospital {
 	private ArrayList<Receptionist> receptionists = new ArrayList<Receptionist>();
 	private ArrayList<Janitor> janitors = new ArrayList<Janitor>();
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
+	private ArrayList<MedEmployee> medEmployees = new ArrayList<MedEmployee>();
 
 	public int getNumberOfEmployees() {
 		return employees.size();
-	}
-
-	ArrayList<Employee> getEmployees() {
-		return employees;
 	}
 
 	public String getName(int employeeNumber) {
@@ -105,6 +102,7 @@ public class Hospital {
 		}
 		if (!isAlreadyEmployeeNumber) {
 			employees.add(nurse);
+			medEmployees.add(nurse);
 			nurses.add(nurse);
 		}
 	}
@@ -133,6 +131,7 @@ public class Hospital {
 		}
 		if (!isAlreadyEmployeeNumber) {
 			employees.add(doctor);
+			medEmployees.add(doctor);
 			doctors.add(doctor);
 		}
 	}
@@ -152,6 +151,128 @@ public class Hospital {
 			} else {
 				System.out.println("Employee number " + employee.getEmployeeNumber() + " has already been paid.");
 			}
+		}
+	}
+
+	public ArrayList<String[]> getAllEmployeeStats() {
+		ArrayList<String[]> allStats = new ArrayList<String[]>();
+
+		for (Doctor doctor : doctors) {
+			String[] stats = new String[8];
+			stats[0] = doctor.getName();
+			stats[1] = Integer.toString(doctor.getEmployeeNumber());
+			stats[2] = Integer.toString(doctor.getSalary());
+			stats[3] = Boolean.toString(doctor.getHasBeenPaid());
+			stats[4] = doctor.getSpecialty();
+			stats[5] = "";
+			stats[6] = "";
+			stats[7] = "";
+			allStats.add(stats);
+		}
+		for (Nurse nurse : nurses) {
+			String[] stats = new String[8];
+			stats[0] = nurse.getName();
+			stats[1] = Integer.toString(nurse.getEmployeeNumber());
+			stats[2] = Integer.toString(nurse.getSalary());
+			stats[3] = Boolean.toString(nurse.getHasBeenPaid());
+			stats[4] = "";
+			stats[5] = Integer.toString(nurse.getNumberOfPatients());
+			stats[6] = "";
+			stats[7] = "";
+			allStats.add(stats);
+		}
+		for (Janitor janitor : janitors) {
+			String[] stats = new String[8];
+			stats[0] = janitor.getName();
+			stats[1] = Integer.toString(janitor.getEmployeeNumber());
+			stats[2] = Integer.toString(janitor.getSalary());
+			stats[3] = Boolean.toString(janitor.getHasBeenPaid());
+			stats[4] = "";
+			stats[5] = "";
+			stats[6] = Boolean.toString(janitor.getIsSweeping());
+			stats[7] = "";
+			allStats.add(stats);
+		}
+		for (Receptionist receptionist : receptionists) {
+			String[] stats = new String[8];
+			stats[0] = receptionist.getName();
+			stats[1] = Integer.toString(receptionist.getEmployeeNumber());
+			stats[2] = Integer.toString(receptionist.getSalary());
+			stats[3] = Boolean.toString(receptionist.getHasBeenPaid());
+			stats[4] = "";
+			stats[5] = "";
+			stats[6] = "";
+			stats[7] = Boolean.toString(receptionist.getIsOnPhone());
+			allStats.add(stats);
+		}
+		return allStats;
+	}
+	
+	public ArrayList<String[]> getMedEmployeeStats() {
+		ArrayList<String[]> allStats = new ArrayList<String[]>();
+
+		for (Doctor doctor : doctors) {
+			String[] stats = new String[8];
+			stats[0] = doctor.getName();
+			stats[1] = Integer.toString(doctor.getEmployeeNumber());
+			stats[2] = Integer.toString(doctor.getSalary());
+			stats[3] = Boolean.toString(doctor.getHasBeenPaid());
+			stats[4] = doctor.getSpecialty();
+			stats[5] = "";
+			stats[6] = "";
+			stats[7] = "";
+			allStats.add(stats);
+		}
+		for (Nurse nurse : nurses) {
+			String[] stats = new String[8];
+			stats[0] = nurse.getName();
+			stats[1] = Integer.toString(nurse.getEmployeeNumber());
+			stats[2] = Integer.toString(nurse.getSalary());
+			stats[3] = Boolean.toString(nurse.getHasBeenPaid());
+			stats[4] = "";
+			stats[5] = Integer.toString(nurse.getNumberOfPatients());
+			stats[6] = "";
+			stats[7] = "";
+			allStats.add(stats);
+		}
+		return allStats;
+	}
+	
+	public void drawBlood(int employeeNumber, Patient patient) {
+		boolean bloodDrawn = false;
+		for (Doctor doctor : doctors) {
+			if (doctor.getEmployeeNumber() == employeeNumber) {
+				doctor.drawBlood(patient);
+				bloodDrawn = true;
+			}
+		}
+		for (Nurse nurse : nurses) {
+			if (nurse.getEmployeeNumber() == employeeNumber) {
+				nurse.drawBlood(patient);
+				bloodDrawn = true;
+			}
+		}
+		if (!bloodDrawn) {
+			System.out.println("Invalid");
+		}
+	}
+	
+	public void care(int employeeNumber, Patient patient) {
+		boolean cared = false;
+		for (Doctor doctor : doctors) {
+			if (doctor.getEmployeeNumber() == employeeNumber) {
+				doctor.care(patient);
+				cared = true;
+			}
+		}
+		for (Nurse nurse : nurses) {
+			if (nurse.getEmployeeNumber() == employeeNumber) {
+				nurse.care(patient);
+				cared = true;
+			}
+		}
+		if (!cared) {
+			System.out.println("Invalid");
 		}
 	}
 }

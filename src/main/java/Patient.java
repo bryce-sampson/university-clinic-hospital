@@ -1,5 +1,5 @@
 
-public class Patient {
+public class Patient{
 
 	private static final int BLOOD_LEVEL = 20;
 	private static final int HEALTH_LEVEL = 10;
@@ -20,8 +20,8 @@ public class Patient {
 		return healthLevel;
 	}
 
-	public void haveBloodDrawn() {
-		bloodLevel -= 2;
+	public void haveBloodDrawn(int amount) {
+		bloodLevel -= amount;
 		if (bloodLevel < 12) {
 			bloodLevel = 12;
 			System.out.println("Cannot draw blood below level 12.");
@@ -29,8 +29,8 @@ public class Patient {
 		}
 	}
 
-	public void beCaredFor() {
-		healthLevel += 2;
+	public void beCaredFor(int amount) {
+		healthLevel += amount;
 		if (healthLevel > 25) {
 			healthLevel = 25;
 			System.out.println("Patient is fully healthy.");

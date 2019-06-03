@@ -6,11 +6,9 @@ public abstract class MedEmployee extends Employee {
 	}
 
 	public void drawBlood(Patient patient) {
-		patient.haveBloodDrawn();
 
 	}
 
 	public void care(Patient patient) {
-		patient.beCaredFor();
 	}
 }

@@ -18,4 +18,13 @@ public class Nurse extends MedEmployee {
 		this.numberOfPatients = 0;
 	}
 
+	@Override
+	public void drawBlood(Patient patient) {
+		patient.haveBloodDrawn(1);
+	}
+	
+	@Override
+	public void care(Patient patient) {
+		patient.beCaredFor(1);
+	}
 }

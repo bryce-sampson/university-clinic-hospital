@@ -19,7 +19,7 @@ public class PatientTest {
 	public void patientShouldBeAbleToHaveBloodDrawnAndDecreaseBloodLevelBy2() {
 		Patient testPatient = new Patient();
 		int initialBloodLevel = testPatient.getBloodLevel();
-		testPatient.haveBloodDrawn();
+		testPatient.haveBloodDrawn(2);
 		int finalBloodLevel = testPatient.getBloodLevel();
 		assertEquals(initialBloodLevel - 2, finalBloodLevel);
 	}
@@ -27,11 +27,11 @@ public class PatientTest {
 	@Test
 	public void shouldNotBeAbleToDrainPatientBloodBelow12() {
 		Patient testPatient = new Patient();
-		testPatient.haveBloodDrawn();
-		testPatient.haveBloodDrawn();
-		testPatient.haveBloodDrawn();
-		testPatient.haveBloodDrawn();
-		testPatient.haveBloodDrawn();
+		testPatient.haveBloodDrawn(2);
+		testPatient.haveBloodDrawn(2);
+		testPatient.haveBloodDrawn(2);
+		testPatient.haveBloodDrawn(2);
+		testPatient.haveBloodDrawn(2);
 		int finalBloodLevel = testPatient.getBloodLevel();
 		assertEquals(12, finalBloodLevel);
 	}
@@ -47,7 +47,7 @@ public class PatientTest {
 	public void patientShouldBeAbleToBeCaredForAndIncreaseHealthBy2() {
 		Patient testPatient = new Patient();
 		int initialHealthLevel = testPatient.getHealthLevel();
-		testPatient.beCaredFor();
+		testPatient.beCaredFor(2);
 		int finalHealthLevel = testPatient.getHealthLevel();
 		assertEquals(initialHealthLevel + 2, finalHealthLevel);
 	}
@@ -55,14 +55,14 @@ public class PatientTest {
 	@Test
 	public void patientShouldHaveMaximumHealthOf25() {
 		Patient testPatient = new Patient();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
-		testPatient.beCaredFor();
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
+		testPatient.beCaredFor(2);
 		int finalHealthLevel = testPatient.getHealthLevel();
 		assertEquals(25, finalHealthLevel);
 	}

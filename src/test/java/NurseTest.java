@@ -68,7 +68,7 @@ public class NurseTest {
 		int initialBloodLevel = testPatient.getBloodLevel();
 		underTest.drawBlood(testPatient);
 		int finalBloodLevel = testPatient.getBloodLevel();
-		assertEquals(initialBloodLevel -2, finalBloodLevel);
+		assertEquals(initialBloodLevel -1, finalBloodLevel);
 	}
 	
 	@Test
@@ -77,7 +77,7 @@ public class NurseTest {
 		int initialHealthLevel = testPatient.getHealthLevel();
 		underTest.care(testPatient);
 		int finalHealthLevel = testPatient.getHealthLevel();
-		assertEquals(initialHealthLevel +2, finalHealthLevel);
+		assertEquals(initialHealthLevel +1, finalHealthLevel);
 	}
 	
 	

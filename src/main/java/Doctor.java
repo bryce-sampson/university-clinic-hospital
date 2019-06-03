@@ -18,4 +18,13 @@ public class Doctor extends MedEmployee {
 		this.specialty = specialty;
 	}
 
+	@Override
+	public void drawBlood(Patient patient) {
+		patient.haveBloodDrawn(2);
+	}
+	
+	@Override
+	public void care(Patient patient) {
+		patient.beCaredFor(2);
+	}
 }

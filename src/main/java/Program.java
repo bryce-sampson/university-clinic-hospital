@@ -55,7 +55,8 @@ public class Program {
 				printPatientStats(patient);
 			} 
 		} while (gameStillGoing);
-
+		
+		input.close();
 	}
 
 	private static void printMenuOptions() {

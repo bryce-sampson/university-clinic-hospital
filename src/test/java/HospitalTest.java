@@ -262,4 +262,71 @@ public class HospitalTest {
 		int finalHealthLevel = patient.getHealthLevel();
 		assertEquals(initialHealthLevel, finalHealthLevel);
 	}
+	
+	@Test
+	public void getAllEmployeeStatsShouldReturnArrayList() {
+		underTest.addDoctor("Alpha", 1, "GP");
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		ArrayList<String[]> stats = underTest.getAllEmployeeStats();
+		assertEquals("Alpha", stats.get(0)[0]);
+		assertEquals("1", stats.get(0)[1]);
+		assertEquals("90000", stats.get(0)[2]);
+		assertEquals("false", stats.get(0)[3]);
+		assertEquals("GP", stats.get(0)[4]);
+		assertEquals("", stats.get(0)[5]);
+		assertEquals("", stats.get(0)[6]);
+		assertEquals("", stats.get(0)[7]);
+		assertEquals("Beta", stats.get(1)[0]);
+		assertEquals("2", stats.get(1)[1]);
+		assertEquals("50000", stats.get(1)[2]);
+		assertEquals("false", stats.get(1)[3]);
+		assertEquals("", stats.get(1)[4]);
+		assertEquals("0", stats.get(1)[5]);
+		assertEquals("", stats.get(1)[6]);
+		assertEquals("", stats.get(1)[7]);
+		assertEquals("Delta", stats.get(2)[0]);
+		assertEquals("4", stats.get(2)[1]);
+		assertEquals("40000", stats.get(2)[2]);
+		assertEquals("false", stats.get(2)[3]);
+		assertEquals("", stats.get(2)[4]);
+		assertEquals("", stats.get(2)[5]);
+		assertEquals("false", stats.get(2)[6]);
+		assertEquals("", stats.get(2)[7]);
+		assertEquals("Gamma", stats.get(3)[0]);
+		assertEquals("3", stats.get(3)[1]);
+		assertEquals("45000", stats.get(3)[2]);
+		assertEquals("false", stats.get(3)[3]);
+		assertEquals("", stats.get(3)[4]);
+		assertEquals("", stats.get(3)[5]);
+		assertEquals("", stats.get(3)[6]);
+		assertEquals("false", stats.get(3)[7]);
+	}
+	
+	@Test
+	public void getMedEmployeeStatsShouldreturnArrayList() {
+		underTest.addDoctor("Alpha", 1, "GP");
+		underTest.addNurse("Beta", 2);
+		underTest.addReceptionist("Gamma", 3);
+		underTest.addJanitor("Delta", 4);
+		underTest.getMedEmployeeStats();
+		ArrayList<String[]> stats = underTest.getMedEmployeeStats();
+		assertEquals("Alpha", stats.get(0)[0]);
+		assertEquals("1", stats.get(0)[1]);
+		assertEquals("90000", stats.get(0)[2]);
+		assertEquals("false", stats.get(0)[3]);
+		assertEquals("GP", stats.get(0)[4]);
+		assertEquals("", stats.get(0)[5]);
+		assertEquals("", stats.get(0)[6]);
+		assertEquals("", stats.get(0)[7]);
+		assertEquals("Beta", stats.get(1)[0]);
+		assertEquals("2", stats.get(1)[1]);
+		assertEquals("50000", stats.get(1)[2]);
+		assertEquals("false", stats.get(1)[3]);
+		assertEquals("", stats.get(1)[4]);
+		assertEquals("0", stats.get(1)[5]);
+		assertEquals("", stats.get(1)[6]);
+		assertEquals("", stats.get(1)[7]);
+	}
 }
